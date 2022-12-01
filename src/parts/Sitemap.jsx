@@ -85,7 +85,7 @@ export default function Sitemap() {
                   className="bg-gray-100 rounded-xl py-3 px-5 w-full focus:outline-none"
                   placeholder="your email adress"
                 />
-                <label for="" className="relative w-full">
+                <label htmlFor="" className="relative w-full">
                   <button className="bg-pink-400 absolute rounded-xl right-0 p-3 text-white">
                     <svg
                       width="24"
