@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 export default function Header() {
   return (
     <header className="absolute w-full z-50 px-4">
@@ -12,16 +14,16 @@ export default function Header() {
           <ul id="menu"
             className="fixed bg-white inset-0 flex flex-col invisible items-center justify-center opacity-0 md:visible md:flex-row md:bg-transparent md:relative md:opacity-100">
             <li className="mx-3 py-6 md:py-0">
-              <a href="#" className="text-black hover:text-white hover:underline">Showcase</a>
+                <Link className="text-black hover:text-white hover:underline" to="/showcase">Showcase</Link>
             </li>
             <li className="mx-3 py-6 md:py-0">
-              <a href="#" className="text-black hover:text-white hover:underline">Catalog</a>
+              <Link to="/" className="text-black hover:text-white hover:underline">Catalog</Link>
             </li>
             <li className="mx-3 py-6 md:py-0">
-              <a href="#" className="text-black hover:text-white hover:underline">Delivery</a>
+              <Link to="/" className="text-black hover:text-white hover:underline">Delivery</Link>
             </li>
             <li className="mx-3 py-6 md:py-0">
-              <a href="#" className="text-black hover:text-white hover:underline">Rewards</a>
+              <Link to="/" className="text-black hover:text-white hover:underline">Rewards</Link>
             </li>
           </ul>
         </div>
@@ -43,7 +45,7 @@ export default function Header() {
               </button>
             </li>
             <li className="ml-6">
-              <a id="header-cart" href="cart.html"
+              <Link to="/cart"  href="cart.html"
                 className="flex-items-center-justify-center w-8 h-8 text-black hover:text-white cart cart-filled">
                 <svg className="fill-current" width="29" height="25" viewBox="0 0 29 25" fill="none"
                   xmlns="http://www.w3.org/2000/svg">
@@ -61,7 +63,7 @@ export default function Header() {
                     <circle cx="25" cy="4.89023" r="4" fill="#F9CADA" className="fill-current dot" />
                   </g>
                 </svg>
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
