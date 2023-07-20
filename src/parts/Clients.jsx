@@ -6,28 +6,28 @@ export default function Clients() {
       <div className="flex justify-center flex-wrap">
         <div className="w-full flex-auto md:w-auto md:flex-initial px-4 md:px-6 my-4 md:my-0">
           <img
-            src="./images/content/logo-adobe.png"
+            src="/images/content/logo-adobe.png"
             alt="logo adobe"
             className="mx-auto"
           />
         </div>
         <div className="w-full flex-auto md:w-auto md:flex-initial px-4 md:px-6 my-4 md:my-0">
           <img
-            src="./images/content/logo-ikea.png"
+            src="/images/content/logo-ikea.png"
             alt="logo ikea"
             className="mx-auto"
           />
         </div>
         <div className="w-full flex-auto md:w-auto md:flex-initial px-4 md:px-6 my-4 md:my-0">
           <img
-            src="./images/content/logo-herman-miller.png"
+            src="/images/content/logo-herman-miller.png"
             alt="logo herman miller"
             className="mx-auto"
           />
         </div>
         <div className="w-full flex-auto md:w-auto md:flex-initial px-4 md:px-6 my-4 md:my-0">
           <img
-            src="./images/content/logo-miele.png"
+            src="/images/content/logo-miele.png"
             alt="logo miele"
             className="mx-auto"
           />

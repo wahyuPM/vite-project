@@ -10,7 +10,7 @@ import Footer from "@/parts/Footer";
 export default function HomePage(props) {
   return (
     <Fragment>
-      <Header></Header>
+      <Header theme="white" position="absolute"></Header>
       <Hero></Hero>
       <BrowseRoom></BrowseRoom>
       <JustArrived></JustArrived>

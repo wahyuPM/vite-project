@@ -6,7 +6,7 @@ export default function Sitemap() {
       <div className="border-t border-b border-gray-200 py-12 mt-16 px-4">
         <div className="flex justify-center mb-8">
           <img
-            src="images/design/logo.svg"
+            src="/images/design/logo.svg"
             alt="Luxspace - Adalah sebuah website yang menjual barang-barang bagus"
           />
         </div>
