@@ -2,6 +2,8 @@ import React, { Fragment } from "react";
 
 import Header from "@/parts/Header";
 import Breadcrumb from "@/components/Breadcrumb";
+import ProductDetails from "@/parts/Details/ProductDetails";
+import Suggestion from "@/parts/Details/Suggestion";
 import Sitemap from "@/parts/Sitemap";
 import Footer from "@/parts/Footer";
 export default function HomePage() {
@@ -13,7 +15,8 @@ export default function HomePage() {
                 { url: 'categories/1221', name: 'Office Room' },
                 { url: 'categories/1221/products/2422', name: 'Details' },
             ]} />
-
+            <ProductDetails />
+            <Suggestion />
             <Sitemap></Sitemap>
             <Footer></Footer>
         </Fragment>
