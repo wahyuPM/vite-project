@@ -104,7 +104,6 @@ export default function Carousel({ children, refContainer }) {
             document.onmouseup = null
             document.onmousemove = null
         },
-        [],
     )
 
     const onDragStart = useCallback(
@@ -130,7 +129,6 @@ export default function Carousel({ children, refContainer }) {
             ev = ev || window.event
             !isAllowShift.current && ev.preventDefault()
         },
-        [],
     )
 
 
