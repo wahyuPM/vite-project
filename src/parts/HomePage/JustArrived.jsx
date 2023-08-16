@@ -15,7 +15,7 @@ export default function JustArrived() {
       fetch({ url: '/api/products/?page=1&limit=10' })
     )
   }, [run]);
-  console.log(data, status, error)
+  // console.log(data, status, error)
   return (
     <section className="flex flex-col py-16">
       <div className="container mx-auto mb-4">

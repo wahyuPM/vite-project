@@ -1,8 +1,9 @@
 import React, { useRef, useState, useCallback, useLayoutEffect } from 'react'
+import { addClass, removeClass } from '@/helpers/format/classNameModifier'
 
 export default function Carousel({ children, refContainer }) {
     const refDragHandler = useRef(null)
-    // const containerClientReact = refContainer.curent.getBoundingClientReact()
+    const containerClientRect = refContainer.current.getBoundingClientRect()
     const [index, setIndex] = useState(0)
 
     const threshold = 100
@@ -22,9 +23,9 @@ export default function Carousel({ children, refContainer }) {
 
     const fnCheckIndex = useCallback(
         (e) => {
-            if (e.propertyName = 'left') {
+            if (e.propertyName === 'left') {
                 setTimeout(() => {
-                    refDragHandler.current.classList.remove('.transition-all.duration-200')
+                    removeClass(refDragHandler.current, 'transition-all duration-200')
                 }, 200);
 
                 const isMobile = window.innerWidth < 767 ? 0 : -1
@@ -33,10 +34,10 @@ export default function Carousel({ children, refContainer }) {
                     refDragHandler.current.style.left = 0
                     setIndex(0)
                 } else if (index >= cardCount - itemToShow) {
-                    refDragHandler.current.style.left = -((cardCount - itemToShow + isMobile) * cardSize)
+                    refDragHandler.current.style.left = `${-((cardCount - itemToShow + isMobile) * cardSize)}px`
                     setIndex(cardCount - itemToShow)
                 } else if (index === cardCount || index === cardCount - 1) {
-                    refDragHandler.current.style.left = (cardCount - 1) * cardSize
+                    refDragHandler.current.style.left = `${(cardCount - 1) * cardSize}px`
                     setIndex(cardCount - 1)
                 }
                 isAllowShift.current = true
@@ -49,16 +50,15 @@ export default function Carousel({ children, refContainer }) {
 
     const fnShiftItem = useCallback(
         (direction) => {
-            refDragHandler.current.classList.add('.transition-all.duration-200')
-            // refDragHandler.current.classList.add('.transition-all.duration-200')
+            addClass(refDragHandler.current, 'transition-all duration-200')
 
             if (isAllowShift.current) {
                 if (direction === 'DIRECTION_LEFT') {
                     setIndex(prev => prev + 1)
-                    refDragHandler.current.style.left = posInitial.current - cardSize + 'px'
+                    refDragHandler.current.style.left = `${posInitial.current - cardSize}px`
                 } else if (direction === 'DIRECTION_RIGHT') {
                     setIndex(prev => prev - 1)
-                    refDragHandler.current.style.left = posInitial.current + cardSize + 'px'
+                    refDragHandler.current.style.left = `${posInitial.current + cardSize}px`
                 }
             }
             isAllowShift.current = false
@@ -112,7 +112,6 @@ export default function Carousel({ children, refContainer }) {
             ev = ev || window.event
             ev.preventDefault()
 
-
             posInitial.current = refDragHandler.current.offsetLeft
 
             if (ev.type === 'touchstart') {
@@ -126,10 +125,14 @@ export default function Carousel({ children, refContainer }) {
         [onDragEnd, onDragMove],
     )
 
-    const onClick = ev => {
-        ev = ev || window.event
-        !isAllowShift.curent && ev.preventDefault()
-    }
+    const onClick = useCallback(
+        ev => {
+            ev = ev || window.event
+            !isAllowShift.current && ev.preventDefault()
+        },
+        [],
+    )
+
 
     useLayoutEffect(() => {
         const refForwardDragHandler = refDragHandler.current
@@ -149,8 +152,14 @@ export default function Carousel({ children, refContainer }) {
         };
     }, [onDragStart, onDragMove, onDragEnd, onClick, fnCheckIndex])
 
+    useLayoutEffect(() => {
+        if (refDragHandler.current) {
+            cards.current = refDragHandler.current.getElementsByClassName("card")
+        }
+    }, [])
+
     return (
-        <div ref={refDragHandler} className="flex -mx-4 flex-row relative">{children}</div>
+        <div ref={refDragHandler} className="flex -mx-4 flex-row relative" style={{ paddingLeft: containerClientRect.left - 16 }}>{children}</div>
     )
 
 }
