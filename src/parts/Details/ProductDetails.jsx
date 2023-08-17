@@ -1,15 +1,17 @@
 import React from 'react'
+import parse from 'html-react-parser';
 
-export default function ProductDetails() {
+export default function ProductDetails({ data }) {
+
   return (
     <section className="container mx-auto">
       <div className="flex flex-wrap my-4 md:my-12">
         {/* <!-- title mobile --> */}
         <div className="w-full md:hidden px-4">
           <h2 className="text-5xl font-semibold">
-            Chair Thatty
+            {data?.title}
           </h2>
-          <span className="text-xl">IDR 12.000.000</span>
+          <span className="text-xl">IDR {data?.price}</span>
         </div>
         {/* <!-- title mobile --> */}
         <div className="flex-1">
@@ -67,9 +69,9 @@ export default function ProductDetails() {
         <div className="flex-1 px-4 md:p-6">
           {/* <!-- tittle desktop --> */}
           <div className="hidden md:block">
-            <h2 className="text-5xl font-semibold">Chair Thatty</h2>
+            <h2 className="text-5xl font-semibold">{data?.title}</h2>
             <p className="text-xl">
-              IDR 12.000.000
+              IDR {data?.price}
             </p>
           </div>
           {/* <!-- tittle desktop --> */}
@@ -98,17 +100,7 @@ export default function ProductDetails() {
           <h6 className="text-xl font-semibold mb-4">
             About the product:
           </h6>
-          <p className="text-xl leading-7 mb-6">
-            Tailored to a level of perfection synonymous with that
-            of a Savile Row suit and with understated quality in the
-            detail, Jetty has been influenced by timeless 1950s style.
-          </p>
-          <p className="text-xl leading-7 mb-6">
-            Providing a subtle nod to the past, Jetty also provides
-            a perfect solution for the way we work today.
-            A comprehensive product family, Jetty features a variety
-            of elegant chairs and sofas.
-          </p>
+          {data.description ? parse(`${data.description}`) : ""}
         </div>
       </div>
     </section>
