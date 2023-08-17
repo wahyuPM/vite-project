@@ -137,14 +137,14 @@ export default function Carousel({ children, refContainer }) {
 
         refForwardDragHandler.onmousedown = onDragStart
         refForwardDragHandler.addEventListener('touchstart', onDragStart)
-        refForwardDragHandler.addEventListener('touchmove', onDragEnd)
-        refForwardDragHandler.addEventListener('touchstart', onDragMove)
+        refForwardDragHandler.addEventListener('touchend', onDragEnd)
+        refForwardDragHandler.addEventListener('touchmove', onDragMove)
         refForwardDragHandler.addEventListener('click', onClick)
         refForwardDragHandler.addEventListener('transitionend', fnCheckIndex)
         return () => {
             refForwardDragHandler.removeEventListener('touchstart', onDragStart)
-            refForwardDragHandler.removeEventListener('touchmove', onDragEnd)
-            refForwardDragHandler.removeEventListener('touchstart', onDragMove)
+            refForwardDragHandler.removeEventListener('touchend', onDragEnd)
+            refForwardDragHandler.removeEventListener('touchmove', onDragMove)
             refForwardDragHandler.removeEventListener('click', onClick)
             refForwardDragHandler.removeEventListener('transitionend', fnCheckIndex)
         };
