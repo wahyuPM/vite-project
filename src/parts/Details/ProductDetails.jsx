@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import parse from 'html-react-parser';
 
 export default function ProductDetails({ data }) {
-
+  const [slider, setSlider] = useState((data?.imgUrls?.[0] || ''))
   return (
     <section className="container mx-auto">
       <div className="flex flex-wrap my-4 md:my-12">
@@ -18,49 +18,22 @@ export default function ProductDetails({ data }) {
           <div className="slider">
             <div className="thumbnail">
               {/* <!-- Start: slideshow thumbnail item 1 --> */}
-              <div className="px-2">
-                <div className="item selected" data-img="/images/content/chair1.jpg">
-                  <img src="/images/content/chair1.jpg" alt="chair side"
-                    className="object-cover w-full h-full rounded-lg" />
-                </div>
-              </div>
+              {
+                data?.imgUrls?.map(item => {
+                  return <div className="px-2" key={item} onClick={() => setSlider(item)}>
+                    <div className={["item", slider === item ? "bg-gray-100 selected" : ""].join(" ")} >
+                      <img src={item} alt={item}
+                        className="object-cover w-full h-full rounded-lg" />
+                    </div>
+                  </div>
+                })
+              }
               {/* <!-- End: slideshow thumbnail item 1 --> */}
-              {/* <!-- Start: slideshow thumbnail item 2 --> */}
-              <div className="px-2">
-                <div className="item" data-img="/images/content/chair2.jpg">
-                  <img src="/images/content/chair2.jpg" alt="chair side"
-                    className="object-cover w-full h-full rounded-lg" />
-                </div>
-              </div>
-              {/* <!-- End: slideshow thumbnail item 2 --> */}
-              {/* <!-- Start: slideshow thumbnail item 3 --> */}
-              <div className="px-2">
-                <div className="item" data-img="/images/content/chair1.jpg">
-                  <img src="/images/content/chair1.jpg" alt="chair side"
-                    className="object-cover w-full h-full rounded-lg" />
-                </div>
-              </div>
-              {/* <!-- End: slideshow thumbnail item 3 --> */}
-              {/* <!-- Start: slideshow thumbnail item 4 --> */}
-              <div className="px-2">
-                <div className="item" data-img="/images/content/chair1.jpg">
-                  <img src="/images/content/chair1.jpg" alt="chair side"
-                    className="object-cover w-full h-full rounded-lg" />
-                </div>
-              </div>
-              {/* <!-- End: slideshow thumbnail item 4 --> */}
-              {/* <!-- Start: slideshow thumbnail item 5 --> */}
-              <div className="px-2">
-                <div className="item" data-img="/images/content/chair1.jpg">
-                  <img src="/images/content/chair1.jpg" alt="chair side"
-                    className="object-cover w-full h-full rounded-lg" />
-                </div>
-              </div>
-              {/* <!-- End: slideshow thumbnail item 5 --> */}
+
             </div>
             <div className="preview">
               <div className="item rounded-lg h-full overflow-hidden">
-                <img src="/images/content/chair1.jpg" alt=""
+                <img src={slider} alt={slider}
                   className="object-cover w-full h-full rounded-lg" />
               </div>
             </div>
