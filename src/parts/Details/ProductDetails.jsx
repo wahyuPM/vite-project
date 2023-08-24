@@ -1,8 +1,13 @@
 import React, { useState } from 'react'
 import parse from 'html-react-parser';
 
+import { useGlobalContext } from '@/helpers/hooks/useGlobalContext';
+
 export default function ProductDetails({ data }) {
   const [slider, setSlider] = useState((data?.imgUrls?.[0] || ''))
+
+  const { dispatch } = useGlobalContext()
+
   return (
     <section className="container mx-auto">
       <div className="flex flex-wrap my-4 md:my-12">
@@ -49,8 +54,11 @@ export default function ProductDetails({ data }) {
           </div>
           {/* <!-- tittle desktop --> */}
 
-          <a href="cart.html"
-            className="transition-all duration-200 bg-pink-400 text-black focus:bg-black focus:text-pink-400 rounded-full px-8 py-3 mt-4 inline-flex w-full md:w-auto justify-center">
+          <button
+            className="transition-all duration-200 bg-pink-400 text-black focus:bg-black focus:text-pink-400 rounded-full px-8 py-3 mt-4 inline-flex w-full md:w-auto justify-center" onClick={() => dispatch({
+              type: 'ADD_TO_CART',
+              item: data
+            })}>
             <svg className="fill-current mr-3" width="26" height="25" viewBox="0 0 26 25" fill="none"
               xmlns="http://www.w3.org/2000/svg">
               <path
@@ -66,7 +74,7 @@ export default function ProductDetails({ data }) {
             </svg>
 
             Add to Cart
-          </a>
+          </button>
 
           <hr className="my-8" />
 
