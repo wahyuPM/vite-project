@@ -23,7 +23,7 @@ export default function Header({ theme, position }) {
   }, [state.cart]);
 
   return (
-    <header className={[position, "w-full z-20 px-4"].join(" ")}>
+    <header className={[position, "w-full z-40 px-4"].join(" ")}>
       <div className="container mx-auto py-10">
         <div className="flex flex-stretch items-center">
           <div className="w-56 flex items-center">
@@ -43,16 +43,16 @@ export default function Header({ theme, position }) {
               ].join(" ")}
             >
               <li className="mx-3 py-6 md:py-0">
-                <Link className={["hover:underline", theme === 'white' ? "text-black md:text-white" : "text-white md:text-black"].join(" ")} to="/showcase">Showcase</Link>
+                <Link className={["hover:underline", theme === 'white' ? "text-black md:text-white" : "text-black md:text-black"].join(" ")} to="/showcase">Showcase</Link>
               </li>
               <li className="mx-3 py-6 md:py-0">
-                <Link to="/" className={["hover:underline", theme === 'white' ? "text-black md:text-white" : "text-white md:text-black"].join(" ")}>Catalog</Link>
+                <Link to="/" className={["hover:underline", theme === 'white' ? "text-black md:text-white" : "text-black md:text-black"].join(" ")}>Catalog</Link>
               </li>
               <li className="mx-3 py-6 md:py-0">
-                <Link to="/" className={["hover:underline", theme === 'white' ? "text-black md:text-white" : "text-white md:text-black"].join(" ")}>Delivery</Link>
+                <Link to="/" className={["hover:underline", theme === 'white' ? "text-black md:text-white" : "text-black md:text-black"].join(" ")}>Delivery</Link>
               </li>
               <li className="mx-3 py-6 md:py-0">
-                <Link to="/" className={["hover:underline", theme === 'white' ? "text-black md:text-white" : "text-white md:text-black"].join(" ")}>Rewards</Link>
+                <Link to="/" className={["hover:underline", theme === 'white' ? "text-black md:text-white" : "text-black md:text-black"].join(" ")}>Rewards</Link>
               </li>
             </ul>
           </div>

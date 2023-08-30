@@ -4,9 +4,11 @@ export default function fetchData({
     return fetch(`${host}${url}`, {
         method, mode: "cors", headers: { "Content-Type": "application/json" }
     }).then(async (response) => {
-        const jsonResponse = await response.json()
-        if (response.ok)
-            return jsonResponse
+        const statusHasResponse = [200, 404];
+        const jsonResponse = statusHasResponse.includes(response.status)
+            ? await response.json()
+            : response;
+        if (response.ok) return jsonResponse;
         throw new Error(JSON.stringify(jsonResponse))
     })
 }

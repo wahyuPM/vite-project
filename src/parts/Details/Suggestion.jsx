@@ -19,7 +19,7 @@ export default function Suggestion({ data }) {
                                         className="w-full h-full object-cover object-center" />
                                 </div>
                                 <h5 className="text-large font-semibold mt-4">{item.title}</h5>
-                                <span className="">IDR {item.price}</span>
+                                <span className="">{item.price.currency()}</span>
                                 <Link to={`/categories/${item.idc}/products/${item.id}`} className="stretched-link">
                                     {/* <!-- fake children --> */}
                                 </Link>

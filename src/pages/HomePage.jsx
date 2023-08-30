@@ -7,15 +7,11 @@ import JustArrived from "@/parts/HomePage/JustArrived";
 import Clients from "@/parts/Clients";
 import Sitemap from "@/parts/Sitemap";
 import Footer from "@/parts/Footer";
-
-import useScrollAnchor from "@/helpers/hooks/useScrollAnchor";
-import useModalDOM from "@/helpers/hooks/useModalDOM";
+import Document from "@/parts/Document";
 
 export default function HomePage(props) {
-  useScrollAnchor()
-  useModalDOM()
   return (
-    <Fragment>
+    <Document>
       <Header theme="white" position="absolute"></Header>
       <Hero></Hero>
       <BrowseRoom></BrowseRoom>
@@ -23,6 +19,6 @@ export default function HomePage(props) {
       <Clients></Clients>
       <Sitemap></Sitemap>
       <Footer></Footer>
-    </Fragment>
+    </Document>
   );
 }

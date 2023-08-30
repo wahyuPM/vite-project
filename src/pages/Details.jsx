@@ -11,6 +11,8 @@ import ProductDetails from "@/parts/Details/ProductDetails";
 import Suggestion from "@/parts/Details/Suggestion";
 import Sitemap from "@/parts/Sitemap";
 import Footer from "@/parts/Footer";
+import Document from "@/parts/Document";
+import PageErrorMessage from "@/parts/PageErrorMessage";
 
 function LoadingProductDetails() {
     return (
@@ -104,7 +106,7 @@ function LoadingSuggestion() {
 
 export default function HomePage() {
     const { idp } = useParams()
-    const { data, status, error, run, isLoading } = useAsync()
+    const { data, status, error, run, isLoading, isError } = useAsync()
 
     useEffect(() => {
         run(
@@ -113,18 +115,35 @@ export default function HomePage() {
     }, [run, idp]);
 
     return (
-        <Fragment>
+        <Document>
             <Header theme="black" position="realtive"></Header>
             <Breadcrumb list={[
                 { url: '/', name: 'Home' },
                 { url: 'categories/1221', name: 'Office Room' },
                 { url: 'categories/1221/products/2422', name: 'Details' },
             ]} />
-            {isLoading ? <LoadingProductDetails /> : <ProductDetails data={data} />}
-            {isLoading ? <LoadingSuggestion /> : <Suggestion data={data?.relatedProducts || {}} />}
+            {isError ? (
+                <PageErrorMessage
+                    title="Product Not Found"
+                    body={error.errors.message}
+                />
+            ) : (
+                <Fragment>
+                    {isLoading ? (
+                        <LoadingProductDetails />
+                    ) : (
+                        <ProductDetails data={data} />
+                    )}
+                    {isLoading ? (
+                        <LoadingSuggestion />
+                    ) : (
+                        <Suggestion data={data?.relatedProducts || {}} />
+                    )}
+                </Fragment>
+            )}
 
             <Sitemap></Sitemap>
             <Footer></Footer>
-        </Fragment>
+        </Document>
     );
 }

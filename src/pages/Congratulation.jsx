@@ -4,10 +4,11 @@ import Header from "@/parts/Header";
 import Breadcrumb from "@/components/Breadcrumb";
 import Sitemap from "@/parts/Sitemap";
 import Footer from "@/parts/Footer";
+import Document from '@/parts/Document';
 
 export default function Congratulation() {
     return (
-        <Fragment>
+        <Document>
             <Header theme="black"></Header>
             <Breadcrumb list={[
                 { url: '/', name: 'Home' },
@@ -34,6 +35,6 @@ export default function Congratulation() {
             </section>
             <Sitemap></Sitemap>
             <Footer></Footer>
-        </Fragment>
+        </Document>
     )
 }

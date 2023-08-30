@@ -130,7 +130,7 @@ export default function ShippingDetails() {
                                         </div>
                                     ))
                                 : data?.couriers?.map((item) => (
-                                    <div className="px-2 w-6/12 h-24 mb-4">
+                                    <div key={item.name} className="px-2 w-6/12 h-24 mb-4">
                                         <button
                                             type="button"
                                             onClick={() =>
@@ -168,7 +168,7 @@ export default function ShippingDetails() {
                                         </div>
                                     ))
                                 : data?.payments?.map((item) => (
-                                    <div className="px-2 w-6/12 h-24 mb-4">
+                                    <div className="px-2 w-6/12 h-24 mb-4" key={item.name}>
                                         <button
                                             type="button"
                                             onClick={() =>

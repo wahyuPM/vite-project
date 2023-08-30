@@ -3,12 +3,14 @@ import Header from "@/parts/Header";
 import Breadcrumb from "@/components/Breadcrumb";
 import Sitemap from "@/parts/Sitemap";
 import Footer from "@/parts/Footer";
+import Document from '@/parts/Document';
 
 import ShoppingCart from '@/parts/Cart/ShoppingCart';
 import ShippingDetails from '@/parts/Cart/ShippingDetails';
+
 export default function Cart() {
     return (
-        <Fragment>
+        <Document>
             <Header theme="black" position="realtive"></Header>
             <Breadcrumb list={[
                 { url: '/', name: 'Home' },
@@ -24,6 +26,6 @@ export default function Cart() {
             </section>
             <Sitemap />
             <Footer />
-        </Fragment>
+        </Document>
     )
 }

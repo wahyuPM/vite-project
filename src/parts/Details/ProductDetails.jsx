@@ -3,6 +3,8 @@ import parse from 'html-react-parser';
 
 import { useGlobalContext } from '@/helpers/hooks/useGlobalContext';
 
+import "@/helpers/format/currency";
+
 export default function ProductDetails({ data }) {
   const [slider, setSlider] = useState((data?.imgUrls?.[0] || ''))
 
@@ -16,7 +18,7 @@ export default function ProductDetails({ data }) {
           <h2 className="text-5xl font-semibold">
             {data?.title}
           </h2>
-          <span className="text-xl">IDR {data?.price}</span>
+          <span className="text-xl">{data?.price.currency()}</span>
         </div>
         {/* <!-- title mobile --> */}
         <div className="flex-1">
@@ -49,7 +51,7 @@ export default function ProductDetails({ data }) {
           <div className="hidden md:block">
             <h2 className="text-5xl font-semibold">{data?.title}</h2>
             <p className="text-xl">
-              IDR {data?.price}
+              {data?.price.currency()}
             </p>
           </div>
           {/* <!-- tittle desktop --> */}
